@@ -5,16 +5,14 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 # STEP 1 : Load document
 loader  = CSVLoader(file_path='./dataset/titanic.csv')
 data    = loader.load()
-print(data)
 
 # STEP 2 : Split data into chunks
 text_splitter   = RecursiveCharacterTextSplitter(
-    chunk_size  = 500,
-    chunk_overlap   = 50
-)
+                    chunk_size      = 500,
+                    chunk_overlap   = 50
+                    )
 
 splits  = text_splitter.split_documents(data)
-print(len(splits))
 
 # Step 3: Create embeddings,  store in Vector Database 
 # Step 4: Perform the retrieval augmented generation by integrating with LLM 
